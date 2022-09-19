@@ -53,7 +53,7 @@ public class CardOrderFormTest {
         driver.findElement(By.cssSelector("[type='tel']")).sendKeys("+79113004050");
         driver.findElement(By.cssSelector("[data-test-id='agreement']")).click();
         driver.findElement(By.cssSelector(".button__text")).click();
-        String text = driver.findElement(By.cssSelector(".input__sub")).getText();
+        String text = driver.findElement(By.cssSelector("[data-test-id='name'].input_invalid .input__sub")).getText();
         assertEquals("Имя и Фамилия указаные неверно. Допустимы только русские буквы, пробелы и дефисы.", text.trim());
     }
 
@@ -63,7 +63,7 @@ public class CardOrderFormTest {
         driver.findElement(By.cssSelector("[type='tel']")).sendKeys("+79113004050");
         driver.findElement(By.cssSelector("[data-test-id='agreement']")).click();
         driver.findElement(By.cssSelector(".button__text")).click();
-        String text = driver.findElement(By.cssSelector(".input__sub")).getText();
+        String text = driver.findElement(By.cssSelector("[data-test-id='name'].input_invalid .input__sub")).getText();
         assertEquals("Поле обязательно для заполнения", text.trim());
     }
 
@@ -71,9 +71,8 @@ public class CardOrderFormTest {
     void shouldEmptyCheckbox() {
         driver.findElement(By.cssSelector("[type='text']")).sendKeys("Мамин-Сибиряк Иван");
         driver.findElement(By.cssSelector("[type='tel']")).sendKeys("+79113004050");
-        //driver.findElement(By.cssSelector("[data-test-id='agreement']")).click();
         driver.findElement(By.cssSelector(".button__text")).click();
-        String text = driver.findElement(By.cssSelector(".input_invalid")).getText();
+        String text = driver.findElement(By.cssSelector("[data-test-id='agreement'].input_invalid .checkbox__text")).getText();
         assertEquals("Я соглашаюсь с условиями обработки и использования моих персональных данных и разрешаю сделать запрос в бюро кредитных историй", text.trim());
     }
 
